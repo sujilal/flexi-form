@@ -1,11 +1,14 @@
 import React from "react";
 
-const InputTextField = () => {
+const InputTextField = ({ name, onHandleChange }) => {
   return (
-    <div>
-      <div className="field">
-        <input type="text" name="first-name" placeholder="First Name" />
-      </div>
+    <div className="field">
+      <input
+        type="text"
+        name={name}
+        autoComplete="off"
+        onChange={onHandleChange}
+      />
     </div>
   );
 };

@@ -1,17 +1,21 @@
 import React from "react";
 
-const DropDownField = () => {
+const DropDownField = ({ name, val, onHandleChange }) => {
   return (
-    <div>
-      <div className="ui form">
-        <div className="field">
-          <select className="ui search dropdown">
-            <option value>Select Country</option>
-            <option value="AF">Afghanistan</option>
-            <option value="AX">Åland Islands</option>
-          </select>
-        </div>
-      </div>
+    <div className="field">
+      <label>Person's State</label>
+      <select
+        className="ui search dropdown"
+        name={name}
+        onChange={onHandleChange}
+      >
+        <option value>Select State</option>
+        {val.map((values) => (
+          <option value={values} key={values}>
+            {values}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
