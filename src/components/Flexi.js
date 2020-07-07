@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// Field Components
 import InputTextField from "./fields/InputTextField";
 import DropDownField from "./fields/DropDownField";
 
@@ -9,6 +10,7 @@ class Flexi extends Component {
     const { config, ...inputFields } = this.state;
     console.log(inputFields);
     e.preventDefault();
+    this.props.onSubmit(inputFields);
   };
 
   onHandleChange = (e) => {
@@ -18,9 +20,11 @@ class Flexi extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { config } = this.props;
     return (
       <div>
+        {/* Form Render */}
         <form onSubmit={this.formSubmit} className="ui form">
           {config.items.map((form) => {
             if (form.type === "TextField") {
@@ -45,7 +49,7 @@ class Flexi extends Component {
               );
             }
           })}
-          <button className="ui button" type="submit">
+          <button className="ui primary button" type="submit">
             Submit
           </button>
         </form>

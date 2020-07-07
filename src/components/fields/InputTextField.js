@@ -7,6 +7,8 @@ const InputTextField = ({ name, onHandleChange, label }) => {
       <input
         type="text"
         name={name}
+        placeholder="Enter Name"
+        required="required"
         autoComplete="off"
         onChange={onHandleChange}
       />
