@@ -8,7 +8,6 @@ class Flexi extends Component {
 
   formSubmit = (e) => {
     const { config, ...inputFields } = this.state;
-    console.log(inputFields);
     e.preventDefault();
     this.props.onSubmit(inputFields);
   };
@@ -20,7 +19,6 @@ class Flexi extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { config } = this.props;
     return (
       <div>
