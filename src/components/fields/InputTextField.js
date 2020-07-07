@@ -1,8 +1,9 @@
 import React from "react";
 
-const InputTextField = ({ name, onHandleChange }) => {
+const InputTextField = ({ name, onHandleChange, label }) => {
   return (
     <div className="field">
+      <label>{label}</label>
       <input
         type="text"
         name={name}

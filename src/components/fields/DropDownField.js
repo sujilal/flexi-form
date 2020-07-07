@@ -1,9 +1,9 @@
 import React from "react";
 
-const DropDownField = ({ name, val, onHandleChange }) => {
+const DropDownField = ({ name, val, onHandleChange, label }) => {
   return (
     <div className="field">
-      <label>Person's State</label>
+      <label>{label}</label>
       <select
         className="ui search dropdown"
         name={name}

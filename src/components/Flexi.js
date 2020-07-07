@@ -1,51 +1,53 @@
 import React, { Component } from "react";
 import InputTextField from "./fields/InputTextField";
 import DropDownField from "./fields/DropDownField";
-import FieldLabel from "./fields/FieldLabel";
-
-const flexiConfig = {
-  items: [
-    {
-      name: "person_name",
-      label: "Person's Name",
-      type: "TextField",
-    },
-
-    {
-      name: "states",
-      label: "Person's state",
-      type: "DropDown",
-      values: ["Maharashtra", "Kerala", "Tamil Nadu"],
-    },
-  ],
-};
 
 class Flexi extends Component {
-  state = { fields: flexiConfig };
+  state = { config: this.props.config };
+
+  formSubmit = (e) => {
+    const { config, ...inputFields } = this.state;
+    console.log(inputFields);
+    e.preventDefault();
+  };
+
+  onHandleChange = (e) => {
+    this.setState({
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  };
+
   render() {
-    const { fields } = this.state;
+    const { config } = this.props;
     return (
       <div>
-        <form className="ui form">
-          {fields.items.map((form) => {
+        <form onSubmit={this.formSubmit} className="ui form">
+          {config.items.map((form) => {
             if (form.type === "TextField") {
               return (
-                <InputTextField
-                  name={form.name}
-                  onHandleChange={this.onHandleChange}
-                />
+                <div>
+                  <InputTextField
+                    name={form.name}
+                    onHandleChange={this.onHandleChange}
+                    label={form.label}
+                  />
+                </div>
               );
             }
             if (form.type === "DropDown") {
               return (
                 <DropDownField
-                  namvale={form.name}
+                  name={form.name}
                   val={form.values}
                   onHandleChange={this.onHandleChange}
+                  label={form.label}
                 />
               );
             }
           })}
+          <button className="ui button" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );
